@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #ffffff;
+  --bg-alt: #faf7f2;
+  --fg: #1a1a1a;
+  --muted: #6b6b6b;
+  --gold: #c5a572;
+  --gold-dark: #a8884e;
+  --gold-light: #e8d9b8;
+  --border: #e9e2d3;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
+  --color-gold-light: var(--gold-light);
+  --color-border: var(--border);
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
+  overflow-x: clip;
+}
+
+h1, h2, h3, h4, .serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.tracking-brand {
+  letter-spacing: 0.22em;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: #fff;
+  padding: 0.78rem 1.6rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+.btn-gold:hover { background: var(--gold-dark); }
+.btn-gold:active { transform: scale(0.98); }
+
+.btn-outline {
+  border: 1px solid var(--gold);
+  color: var(--gold-dark);
+  padding: 0.78rem 1.6rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: transparent;
+  border-radius: 999px;
+  transition: all 0.2s ease, transform 0.1s ease;
+}
+.btn-outline:hover { background: var(--gold); color: #fff; }
+.btn-outline:active { transform: scale(0.98); }
+
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold) 50%, transparent);
+}
+
+input, select, textarea {
+  background: transparent;
+}
+
+/* hide scrollbar on horizontal scrollers */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@keyframes tbz-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes tbz-toast {
+  0%   { transform: translateY(16px); opacity: 0; }
+  10%  { transform: translateY(0);   opacity: 1; }
+  85%  { transform: translateY(0);   opacity: 1; }
+  100% { transform: translateY(8px); opacity: 0; }
+}
+.marquee-track {
+  width: max-content;
+  animation: tbz-marquee 36s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
