@@ -3,6 +3,7 @@ import Image from "next/image";
 import { collections, products, formatINR } from "@/lib/data";
 import Marquee from "@/components/Marquee";
 import HomeAppHeader from "@/components/HomeAppHeader";
+import Spotlight3D from "@/components/Spotlight3D";
 
 export default function Home() {
   const featured = products.slice(0, 8);
@@ -178,6 +179,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Premium Spotlight 3D Section */}
+      <Spotlight3D />
 
       <section className="hidden lg:grid max-w-7xl mx-auto px-6 lg:px-10 py-10 md:py-20 md:grid-cols-2 gap-10 items-center animate-fade-in-up">
         <div className="relative aspect-square md:aspect-[4/3] rounded-lg overflow-hidden shadow-sm group">
