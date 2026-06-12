@@ -61,7 +61,7 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-[var(--border)]">
+    <header className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-[var(--border)] shadow-sm transition-all duration-300">
       {/* announcement bar (desktop only - keeps mobile chrome app-like) */}
       <div className="hidden lg:block bg-[var(--bg-alt)] text-[11px] tracking-brand uppercase text-[var(--muted)] py-1.5 text-center">
         Heritage of Indian Jewellery since 1864 - Free home preview in select cities

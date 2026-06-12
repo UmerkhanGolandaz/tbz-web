@@ -83,6 +83,13 @@ input, select, textarea {
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-alt); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dark); }
+
+/* Animations */
 @keyframes tbz-marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -94,6 +101,22 @@ input, select, textarea {
   85%  { transform: translateY(0);   opacity: 1; }
   100% { transform: translateY(8px); opacity: 0; }
 }
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0; /* Ensures it stays hidden before animation starts */
+}
+
+/* Stagger delays for children */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
 .marquee-track {
   width: max-content;
   animation: tbz-marquee 36s linear infinite;
@@ -101,4 +124,5 @@ input, select, textarea {
 .marquee-track:hover { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
+  .animate-fade-in-up { animation: none; opacity: 1; transform: none; }
 }

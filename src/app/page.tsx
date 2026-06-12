@@ -12,7 +12,7 @@ export default function Home() {
       <HomeAppHeader />
 
       {/* hero (desktop only - replaced by app-style header on mobile) */}
-      <section className="hidden lg:block relative h-[68vh] min-h-[460px] md:h-[72vh] md:min-h-[480px] overflow-hidden">
+      <section className="hidden lg:block relative h-[68vh] min-h-[460px] md:h-[72vh] md:min-h-[480px] overflow-hidden animate-fade-in-up">
         <Image
           src="/tbz-web/hero.jpg"
           alt="TBZ bridal jewellery"
@@ -51,7 +51,7 @@ export default function Home() {
       </section>
 
       {/* mobile banner card */}
-      <section className="lg:hidden px-5 pt-2">
+      <section className="lg:hidden px-5 pt-2 animate-fade-in-up">
         <Link
           href="/collections/bridal"
           className="relative block aspect-[16/10] overflow-hidden rounded-2xl"
@@ -74,7 +74,7 @@ export default function Home() {
         </Link>
       </section>
 
-      <section className="max-w-7xl mx-auto px-5 lg:px-10 pt-6 lg:pt-14 pb-10 lg:pb-16">
+      <section className="max-w-7xl mx-auto px-5 lg:px-10 pt-6 lg:pt-14 pb-10 lg:pb-16 animate-fade-in-up delay-100">
         <div className="flex items-end justify-between mb-5 lg:mb-8">
           <div>
             <p className="text-[10px] lg:text-[11px] tracking-brand uppercase text-[var(--gold-dark)]">
@@ -113,7 +113,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="hidden lg:block bg-[var(--bg-alt)] py-6">
+      <section className="hidden lg:block bg-[var(--bg-alt)] py-6 animate-fade-in-up delay-200">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
             { t: "Heritage", s: "Crafted since 1864" },
@@ -135,7 +135,7 @@ export default function Home() {
         <Marquee />
       </div>
 
-      <section className="hidden lg:block max-w-7xl mx-auto px-6 lg:px-10 py-10 md:py-20">
+      <section className="hidden lg:block max-w-7xl mx-auto px-6 lg:px-10 py-10 md:py-20 animate-fade-in-up">
         <div className="text-center mb-12">
           <p className="text-[11px] tracking-brand uppercase text-[var(--gold-dark)]">
             Shop By Collection
@@ -168,7 +168,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="hidden lg:grid max-w-7xl mx-auto px-6 lg:px-10 py-10 md:py-20 md:grid-cols-2 gap-10 items-center">
+      <section className="hidden lg:grid max-w-7xl mx-auto px-6 lg:px-10 py-10 md:py-20 md:grid-cols-2 gap-10 items-center animate-fade-in-up">
         <div className="relative aspect-[4/3]">
           <Image
             src="/tbz-web/img/1633934542430-9d4a1f8c0c39.jpg"
@@ -193,7 +193,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="hidden lg:block max-w-7xl mx-auto px-6 lg:px-10 py-10 md:py-20">
+      <section className="hidden lg:block max-w-7xl mx-auto px-6 lg:px-10 py-10 md:py-20 animate-fade-in-up">
         <div className="text-center mb-12">
           <p className="text-[11px] tracking-brand uppercase text-[var(--gold-dark)]">
             From Our Clients
@@ -242,7 +242,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="hidden lg:block bg-[var(--bg-alt)] py-10 md:py-20">
+      <section className="hidden lg:block bg-[var(--bg-alt)] py-10 md:py-20 animate-fade-in-up">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-[11px] tracking-brand uppercase text-[var(--gold-dark)]">
             Our Story
