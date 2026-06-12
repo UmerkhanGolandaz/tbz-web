@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
-import { Product, formatINR } from "@/lib/data";
+import { Product, formatINR, products } from "@/lib/data";
 import TryOnModal from "@/components/TryOnModal";
 import { useNotifications } from "@/components/NotificationProvider";
 import { useWishlist } from "@/components/WishlistProvider";
@@ -44,8 +44,13 @@ export default function ProductView({
     toastTimer.current = setTimeout(() => setToast(null), 2400);
   };
 
+  const relatedProducts = products
+    .filter((p) => p.category === product.category && p.id !== product.id)
+    .slice(0, 4);
+
   return (
-    <div className="grid lg:grid-cols-2 gap-12">
+    <div className="animate-fade-in-up">
+      <div className="grid lg:grid-cols-2 gap-12">
       <div>
         <div
           className="relative aspect-square bg-[var(--bg-alt)] overflow-hidden cursor-zoom-in"
@@ -245,6 +250,41 @@ export default function ProductView({
             />
           </div>
         </button>
+      )}
+      </div>
+
+      {/* Complete the Look Section */}
+      {relatedProducts.length > 0 && (
+        <div className="mt-24 pt-12 border-t border-[var(--border)]">
+          <div className="text-center mb-10">
+            <p className="text-[11px] tracking-brand uppercase text-[var(--gold-dark)]">
+              Curated for you
+            </p>
+            <h2 className="text-3xl mt-2">Complete the Look</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-7">
+            {relatedProducts.map((p) => (
+              <Link key={p.id} href={`/product/${p.id}`} className="group bg-white border border-transparent hover:border-[var(--border)] transition-all">
+                <div className="relative aspect-square overflow-hidden bg-[var(--bg-alt)]">
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    sizes="(max-width:768px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition duration-500"
+                  />
+                </div>
+                <div className="pt-3 pb-4 px-2">
+                  <p className="text-[10px] tracking-brand uppercase text-[var(--muted)]">
+                    {p.type}
+                  </p>
+                  <h4 className="text-sm lg:text-base mt-1 leading-tight">{p.name}</h4>
+                  <p className="mt-1.5 text-[var(--gold-dark)] text-sm">{formatINR(p.price)}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );
