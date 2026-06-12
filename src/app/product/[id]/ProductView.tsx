@@ -262,24 +262,54 @@ export default function ProductView({
             </p>
             <h2 className="text-3xl mt-2">Complete the Look</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-7">
-            {relatedProducts.map((p) => (
-              <Link key={p.id} href={`/product/${p.id}`} className="group bg-white border border-transparent hover:border-[var(--border)] transition-all">
-                <div className="relative aspect-square overflow-hidden bg-[var(--bg-alt)]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
+            {relatedProducts.map((p, index) => (
+              <Link 
+                key={p.id} 
+                href={`/product/${p.id}`} 
+                className="group flex flex-col h-full animate-fade-in-up"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="relative aspect-[4/5] overflow-hidden bg-[var(--bg-alt)] rounded-sm mb-4 shrink-0">
                   <Image
                     src={p.image}
                     alt={p.name}
                     fill
                     sizes="(max-width:768px) 50vw, 25vw"
-                    className="object-cover group-hover:scale-105 transition duration-500"
+                    className="object-cover transform group-hover:scale-110 transition duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
                   />
+                  {/* Subtle dark overlay on hover */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+                  
+                  {/* Floating Wishlist Button */}
+                  <button 
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); /* Wishlist logic */ }}
+                    className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 flex items-center justify-center text-[var(--muted)] hover:text-red-500 hover:scale-110 shadow-lg transition-all duration-500 delay-100"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+
+                  {/* Glassmorphism Slide-up Bar */}
+                  <div className="absolute bottom-0 inset-x-0 h-14 bg-white/70 backdrop-blur-lg border-t border-white/50 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex items-center justify-between px-5">
+                    <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--fg)] font-medium">Quick View</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-[var(--gold-dark)] transform -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-200">
+                       <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
                 </div>
-                <div className="pt-3 pb-4 px-2">
-                  <p className="text-[10px] tracking-brand uppercase text-[var(--muted)]">
+                
+                <div className="text-center px-2 flex flex-col flex-1">
+                  <p className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] mb-1.5">
                     {p.type}
                   </p>
-                  <h4 className="text-sm lg:text-base mt-1 leading-tight">{p.name}</h4>
-                  <p className="mt-1.5 text-[var(--gold-dark)] text-sm">{formatINR(p.price)}</p>
+                  <h4 className="text-sm md:text-base font-light text-[var(--fg)] leading-snug group-hover:text-[var(--gold-dark)] transition-colors duration-300 line-clamp-2">
+                    {p.name}
+                  </h4>
+                  <p className="mt-auto pt-3 text-[var(--gold-dark)] text-sm md:text-base tracking-wide">
+                    {formatINR(p.price)}
+                  </p>
                 </div>
               </Link>
             ))}
