@@ -52,10 +52,7 @@ export default function SplashScreen() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/90" />
       <GoldDust />
       <div className="relative flex flex-col items-center text-center px-6 z-20">
-        <div
-          className="drop-shadow-[0_0_40px_rgba(197,165,114,0.6)] animate-fade-in-up"
-          style={{ filter: "drop-shadow(0 0 40px rgba(197,165,114,0.6))" }}
-        >
+        <div className="animate-fade-in-up flex justify-center items-center">
           <Logo size={240} />
         </div>
         <p className="mt-8 text-[11px] tracking-[0.6em] uppercase text-[var(--gold)] animate-fade-in-up delay-100 drop-shadow-[0_0_10px_rgba(197,165,114,0.8)]">
