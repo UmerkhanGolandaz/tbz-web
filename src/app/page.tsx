@@ -89,24 +89,29 @@ export default function Home() {
             View All →
           </Link>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-7">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-7 pb-6 -mx-5 px-5 lg:mx-0 lg:px-0 no-scrollbar cursor-grab active:cursor-grabbing">
           {featured.map((p) => (
-            <Link key={p.id} href={`/product/${p.id}`} className="group bg-white">
+            <Link key={p.id} href={`/product/${p.id}`} className="group bg-white border border-transparent hover:border-[var(--border)] transition-all snap-start shrink-0 w-[65vw] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1.3rem)]">
               <div className="relative aspect-square overflow-hidden bg-[var(--bg-alt)]">
                 <Image
                   src={p.image}
                   alt={p.name}
                   fill
-                  sizes="(max-width:768px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition duration-500"
+                  sizes="(max-width:768px) 70vw, 25vw"
+                  className="object-cover group-hover:scale-110 transition duration-700 ease-out"
                 />
+                <button className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 backdrop-blur opacity-0 group-hover:opacity-100 flex items-center justify-center text-[var(--muted)] hover:text-red-500 shadow-sm transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                  </svg>
+                </button>
               </div>
-              <div className="pt-3">
+              <div className="pt-4 pb-5 px-3">
                 <p className="text-[10px] tracking-brand uppercase text-[var(--muted)]">
                   {p.type}
                 </p>
-                <h4 className="text-sm lg:text-base mt-1 leading-tight">{p.name}</h4>
-                <p className="mt-1.5 text-[var(--gold-dark)] text-sm">{formatINR(p.price)}</p>
+                <h4 className="text-sm lg:text-base mt-1 leading-tight group-hover:text-[var(--gold-dark)] transition-colors">{p.name}</h4>
+                <p className="mt-2 text-[var(--gold-dark)] text-sm font-medium">{formatINR(p.price)}</p>
               </div>
             </Link>
           ))}
@@ -147,21 +152,27 @@ export default function Home() {
             <Link
               key={c.slug}
               href={`/collections/${c.slug}`}
-              className="group relative aspect-[3/4] overflow-hidden bg-[var(--bg-alt)]"
+              className="group relative aspect-[3/4] overflow-hidden bg-[var(--bg-alt)] rounded-md shadow-sm hover:shadow-xl transition-all duration-500"
             >
               <Image
                 src={c.hero}
                 alt={c.title}
                 fill
                 sizes="(max-width:768px) 50vw, 33vw"
-                className="object-cover group-hover:scale-105 transition duration-500"
+                className="object-cover group-hover:scale-110 group-hover:opacity-80 transition duration-700 ease-in-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-0 p-5 text-white">
-                <h3 className="text-2xl">{c.title}</h3>
-                <p className="text-[11px] tracking-brand uppercase opacity-80 mt-1">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-all duration-500" />
+              <div className="absolute bottom-0 inset-x-0 p-5 text-white flex flex-col justify-end transform transition-transform duration-500">
+                <h3 className="text-2xl lg:text-3xl font-light transform group-hover:-translate-y-2 transition-transform duration-500">{c.title}</h3>
+                <p className="text-[11px] tracking-brand uppercase text-[var(--gold)] mt-1 transform group-hover:-translate-y-2 transition-transform duration-500 delay-75">
                   {c.tagline}
                 </p>
+                <div className="mt-4 overflow-hidden h-0 group-hover:h-10 transition-all duration-500 opacity-0 group-hover:opacity-100 flex items-center gap-2 text-[11px] tracking-brand uppercase">
+                  <span className="border-b border-[var(--gold)] pb-1">Explore Collection</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                     <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
               </div>
             </Link>
           ))}
