@@ -180,13 +180,13 @@ export default function Home() {
       </section>
 
       <section className="hidden lg:grid max-w-7xl mx-auto px-6 lg:px-10 py-10 md:py-20 md:grid-cols-2 gap-10 items-center animate-fade-in-up">
-        <div className="relative aspect-square md:aspect-[4/3] bg-[var(--bg-alt)] rounded-lg overflow-hidden shadow-sm">
+        <div className="relative aspect-square md:aspect-[4/3] rounded-lg overflow-hidden shadow-sm group">
           <Image
-            src="/tbz-web/img/1633934542430-9d4a1f8c0c39.jpg"
-            alt="Kalpavruksha"
+            src="/tbz-web/img/1603561591411-07134e71a2a9.jpg"
+            alt="Kalpavruksha Gold Savings"
             fill
             sizes="(max-width:768px) 100vw, 50vw"
-            className="object-contain p-4 mix-blend-multiply"
+            className="object-cover group-hover:scale-105 transition duration-700"
           />
         </div>
         <div>
