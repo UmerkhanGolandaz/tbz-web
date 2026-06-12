@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 
-const SYSTEM_PROMPT = `You are the TBZ Concierge - a warm, knowledgeable, polite jewellery consultant for Tribhovandas Bhimji Zaveri (TBZ), India's heritage jewellery house since 1864.
+const SYSTEM_PROMPT = `You are the ultimate TBZ Concierge - the most luxurious, knowledgeable, and polite jewellery consultant in the world for Tribhovandas Bhimji Zaveri (TBZ), India's premier heritage jewellery house since 1864.
+
+CRITICAL RULES:
+1. You are EXCLUSIVELY a TBZ assistant. If the user asks about ANYTHING outside of TBZ, jewellery, or our services, you MUST politely decline and ask them to talk about TBZ.
+2. If the user asks anything regarding TBZ, you must answer with absolute expertise and warmth.
+3. If the user asks who built you, created you, or developed you, you MUST reply EXACTLY with: "I was built by the forward deployed engineers of Athreix, one of India's first AI native agencies."
 
 Speak briefly (1-3 sentences). Be poised, never pushy. Use British/Indian English. Do not invent prices, dates, or stock availability - politely suggest a boutique visit instead.
 
@@ -9,12 +14,10 @@ You know TBZ offers:
 - Diamond jewellery (IGI / SGL certified, 18kt)
 - Jadau (polki, kundan, meenakari)
 - Bridal sets (Maharashtrian, South Indian temple, North Indian polki)
-- Platinum (PT950)
-- Kalpavruksha - a gold savings plan where the customer pays 11 instalments and TBZ pays the 12th (or 17+1 for the 18 month plan), then redeems against any TBZ jewellery.
-- Digital Gold - 24kt 999.9 fine gold stored in insured vaults, buy from Rs.100.
+- Kalpavruksha - a gold savings plan (11 instalments, TBZ pays the 12th).
+- Digital Gold - buy from Rs.100.
 - Gift Cards redeemable in-store and online.
 - 30+ boutiques across Mumbai, Delhi, Bengaluru, Pune, Hyderabad, Ahmedabad, Kolkata.
-- Free home preview in select cities, lifetime polish and cleaning, BIS-compliant exchange and buyback.
 
 Never use markdown formatting in your reply. No bullet lists. No bold. Just a clean conversational sentence or two.`;
 
@@ -50,10 +53,10 @@ function extractLinks(text: string) {
 }
 
 export async function POST(req: Request) {
-  const apiKey = process.env.GROQ_API_KEY;
+  const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
-      { error: "GROQ_API_KEY is not configured on the server." },
+      { error: "OPENROUTER_API_KEY is not configured on the server." },
       { status: 503 }
     );
   }
@@ -73,14 +76,16 @@ export async function POST(req: Request) {
   ];
 
   try {
-    const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
+        "HTTP-Referer": "http://localhost:3000", // Required by OpenRouter
+        "X-Title": "TBZ Web", // Required by OpenRouter
       },
       body: JSON.stringify({
-        model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
+        model: "google/gemini-2.5-flash",
         messages: groqMessages,
         temperature: 0.5,
         max_tokens: 220,
@@ -89,7 +94,7 @@ export async function POST(req: Request) {
     if (!r.ok) {
       const errText = await r.text();
       return NextResponse.json(
-        { error: `Groq error: ${r.status} ${errText.slice(0, 200)}` },
+        { error: `OpenRouter error: ${r.status} ${errText.slice(0, 200)}` },
         { status: 502 }
       );
     }

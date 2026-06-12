@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { collections, products, formatINR } from "@/lib/data";
+import WishlistButton from "@/components/WishlistButton";
 
 export function generateStaticParams() {
   return collections.map((c) => ({ slug: c.slug }));
@@ -80,14 +81,7 @@ export default async function CollectionPage({
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                   
                   {/* Floating Wishlist Button */}
-                  <button 
-                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); /* Wishlist logic */ }}
-                    className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 flex items-center justify-center text-[var(--muted)] hover:text-red-500 hover:scale-110 shadow-lg transition-all duration-500 delay-100"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                      <path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-                    </svg>
-                  </button>
+                  <WishlistButton />
 
                   {/* Glassmorphism Slide-up Bar */}
                   <div className="absolute bottom-0 inset-x-0 h-14 bg-white/70 backdrop-blur-lg border-t border-white/50 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex items-center justify-between px-5">

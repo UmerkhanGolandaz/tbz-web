@@ -23,7 +23,7 @@ export default function LoginPage() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch("/api/otp", {
+      const res = await fetch("/tbz-web/api/otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ identifier, type: mode }),
@@ -48,7 +48,7 @@ export default function LoginPage() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch("/api/otp", {
+      const res = await fetch("/tbz-web/api/otp", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ identifier, code }),

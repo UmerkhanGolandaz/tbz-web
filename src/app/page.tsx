@@ -4,6 +4,8 @@ import { collections, products, formatINR } from "@/lib/data";
 import Marquee from "@/components/Marquee";
 import HomeAppHeader from "@/components/HomeAppHeader";
 import Spotlight3D from "@/components/Spotlight3D";
+import WishlistButton from "@/components/WishlistButton";
+import GoldDust from "@/components/GoldDust";
 
 export default function Home() {
   const featured = products.slice(0, 8);
@@ -22,23 +24,25 @@ export default function Home() {
           sizes="100vw"
           className="object-cover transform transition-transform duration-[15000ms] ease-out scale-100 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-5 text-white">
-          <p className="text-[12px] tracking-[0.3em] uppercase text-[var(--gold)] mb-4">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80 backdrop-blur-[2px]" />
+        <GoldDust />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-5 text-white z-20">
+          <p className="text-[12px] tracking-[0.4em] uppercase text-[var(--gold)] mb-4 animate-fade-in-up delay-100">
             Established 1864
           </p>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-[var(--gold)] to-transparent mb-6"></div>
-          <h1 className="text-6xl md:text-[5.5rem] font-light leading-tight mb-6 drop-shadow-xl tracking-tight">
-            The Heritage of<br />Indian Jewellery
+          <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-[var(--gold)] to-transparent mb-8 animate-fade-in-up delay-200"></div>
+          <h1 className="text-6xl md:text-[6rem] font-light leading-tight mb-6 drop-shadow-[0_0_30px_rgba(197,165,114,0.3)] tracking-tight animate-fade-in-up delay-300">
+            The Heritage of<br /><span className="italic text-[var(--gold-light)]">Indian Jewellery</span>
           </h1>
-          <p className="max-w-[45ch] text-lg opacity-90 font-light drop-shadow-md">
+          <p className="max-w-[50ch] text-lg opacity-90 font-light drop-shadow-md animate-fade-in-up delay-[400ms]">
             Six generations of master craftsmanship. Every piece a story, perfectly told.
           </p>
-          <div className="mt-12 flex flex-col md:flex-row justify-center gap-6">
+          <div className="mt-14 flex flex-col md:flex-row justify-center gap-6 animate-fade-in-up delay-[500ms]">
             <Link
               href="/collections"
-              className="px-10 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white hover:bg-white hover:text-black transition-all duration-500 uppercase tracking-[0.15em] text-[11px]"
+              className="relative px-12 py-5 bg-white/5 backdrop-blur-xl border border-white/20 text-white hover:bg-white hover:text-black hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] overflow-hidden transition-all duration-700 uppercase tracking-[0.2em] text-[12px] group/btn"
             >
+              <span className="absolute inset-0 w-0 bg-[var(--gold)] transition-all duration-[800ms] ease-out group-hover/btn:w-full -z-10" />
               Explore Collections
             </Link>
           </div>
@@ -49,82 +53,80 @@ export default function Home() {
       <section className="lg:hidden px-5 pt-2 animate-fade-in-up">
         <Link
           href="/collections/bridal"
-          className="relative block aspect-[16/10] overflow-hidden rounded-2xl"
+          className="relative block aspect-[16/10] overflow-hidden rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] group"
         >
           <Image
             src="/tbz-web/hero.jpg"
             alt="TBZ bridal"
             fill
             sizes="100vw"
-            className="object-cover"
+            className="object-cover transform group-hover:scale-110 transition duration-[10000ms] ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/15 to-transparent" />
-          <div className="absolute bottom-0 left-0 p-5 text-white">
-            <p className="text-[10px] tracking-brand uppercase opacity-90">Featured Capsule</p>
-            <p className="text-2xl serif mt-1 leading-tight">The Bridal Atelier</p>
-            <span className="inline-block mt-3 text-[10px] tracking-brand uppercase border border-white/70 rounded-full px-3 py-1">
-              Explore →
+          <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/30 to-transparent" />
+          <GoldDust />
+          <div className="absolute bottom-0 left-0 p-6 text-white z-20">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold-light)] drop-shadow-md">Featured Capsule</p>
+            <p className="text-3xl serif mt-2 leading-tight drop-shadow-lg">The Bridal Atelier</p>
+            <span className="inline-block mt-4 text-[10px] tracking-brand uppercase border border-white/40 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 hover:bg-white hover:text-black transition-all duration-300">
+              Explore Collection →
             </span>
           </div>
         </Link>
       </section>
 
-      <section className="max-w-7xl mx-auto px-5 lg:px-10 pt-10 lg:pt-20 pb-16 lg:pb-24 animate-fade-in-up delay-100">
-        <div className="flex items-end justify-between mb-8 lg:mb-12 border-b border-[var(--border)] pb-4">
+      <section className="max-w-7xl mx-auto px-5 lg:px-10 pt-10 lg:pt-20 pb-16 lg:pb-24 animate-fade-in-up delay-100 relative">
+        {/* Subtle glowing ambient light behind the section */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-[var(--gold)]/5 blur-[100px] -z-10 pointer-events-none" />
+        
+        <div className="flex items-end justify-between mb-10 lg:mb-14 border-b border-gradient-to-r from-[var(--border)] via-[var(--gold)]/30 to-[var(--border)] pb-6 relative">
           <div>
-            <p className="text-[10px] lg:text-[11px] tracking-[0.2em] uppercase text-[var(--gold-dark)] mb-2">
-              Featured
+            <p className="text-[11px] lg:text-[12px] tracking-[0.3em] uppercase text-[var(--gold)] mb-3 flex items-center gap-3">
+              <span className="w-8 h-[1px] bg-[var(--gold)]" />
+              Curated Selection
             </p>
-            <h2 className="text-3xl lg:text-5xl font-light">New arrivals this season</h2>
+            <h2 className="text-4xl lg:text-6xl font-light drop-shadow-sm text-[var(--fg)]">New arrivals this season</h2>
           </div>
           <Link
             href="/collections"
-            className="text-[10px] lg:text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:text-[var(--gold-dark)] transition-colors mb-2"
+            className="group flex items-center gap-2 text-[10px] lg:text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:text-[var(--gold-dark)] transition-colors mb-2"
           >
-            View All →
+            <span className="border-b border-transparent group-hover:border-[var(--gold-dark)] pb-1 transition-all">View Entire Collection</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="transform group-hover:translate-x-1 transition-transform">
+               <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </Link>
         </div>
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-10 -mx-5 px-5 lg:mx-0 lg:px-0 no-scrollbar cursor-grab active:cursor-grabbing">
+
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-8 lg:gap-10 pb-12 -mx-5 px-5 lg:mx-0 lg:px-4 custom-scrollbar cursor-grab active:cursor-grabbing">
           {featured.map((p, index) => (
-            <Link key={p.id} href={`/product/${p.id}`} className="group flex flex-col snap-start shrink-0 w-[70vw] md:w-[calc(40%-1rem)] lg:w-[calc(25%-1.1rem)]" style={{ animationDelay: `${index * 100}ms` }}>
-              <div className="relative aspect-[4/5] overflow-hidden bg-[var(--bg-alt)] rounded-sm mb-4">
+            <Link key={p.id} href={`/product/${p.id}`} className="group flex flex-col snap-start shrink-0 w-[75vw] md:w-[calc(45%-1rem)] lg:w-[calc(28%-1.1rem)]" style={{ animationDelay: `${index * 100}ms` }}>
+              <div className="relative aspect-[4/5] overflow-hidden bg-white rounded-t-3xl rounded-b-md shadow-lg group-hover:shadow-[0_20px_40px_rgba(197,165,114,0.15)] border-[0.5px] border-[var(--gold)]/20 transition-all duration-700">
                 <Image
                   src={p.image}
                   alt={p.name}
                   fill
-                  sizes="(max-width:768px) 70vw, 25vw"
-                  className="object-cover transform group-hover:scale-110 transition duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+                  sizes="(max-width:768px) 75vw, 28vw"
+                  className="object-cover transform group-hover:scale-110 transition duration-[15000ms] ease-out"
                 />
-                {/* Subtle dark overlay on hover */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
-                {/* Floating Wishlist Button */}
-                <button 
-                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); /* Wishlist logic */ }}
-                  className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 flex items-center justify-center text-[var(--muted)] hover:text-red-500 hover:scale-110 shadow-lg transition-all duration-500 delay-100"
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-                  </svg>
-                </button>
+                <WishlistButton />
 
-                {/* Glassmorphism Slide-up Bar */}
-                <div className="absolute bottom-0 inset-x-0 h-14 bg-white/70 backdrop-blur-lg border-t border-white/50 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex items-center justify-between px-5">
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--fg)] font-medium">Quick View</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-[var(--gold-dark)] transform -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-200">
-                     <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                {/* Elegant Glassmorphism Quick View */}
+                <div className="absolute bottom-4 inset-x-4 h-12 bg-white/20 backdrop-blur-xl border border-white/40 rounded-full translate-y-20 group-hover:translate-y-0 transition-transform duration-700 ease-out flex items-center justify-center gap-3 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
+                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shimmer_2s_ease-out_infinite]" />
+                   <span className="text-[10px] tracking-[0.2em] uppercase text-white font-medium drop-shadow-md z-10">Quick View</span>
                 </div>
               </div>
               
-              <div className="text-center px-2">
-                <p className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] mb-1.5">
+              <div className="text-center px-4 pt-6 pb-2">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] mb-2 font-medium">
                   {p.type}
                 </p>
-                <h4 className="text-sm md:text-base font-light text-[var(--fg)] leading-snug group-hover:text-[var(--gold-dark)] transition-colors duration-300 line-clamp-2">
+                <h4 className="text-base md:text-lg font-light text-[var(--fg)] leading-snug group-hover:text-[var(--gold-dark)] transition-colors duration-300 line-clamp-2">
                   {p.name}
                 </h4>
-                <p className="mt-2 text-[var(--gold-dark)] text-sm md:text-base tracking-wide">
+                <p className="mt-3 text-[var(--muted)] text-sm md:text-base tracking-[0.1em] font-light">
                   {formatINR(p.price)}
                 </p>
               </div>
@@ -149,7 +151,7 @@ export default function Home() {
             <Link
               key={c.slug}
               href={`/collections/${c.slug}`}
-              className="group relative aspect-[4/5] overflow-hidden bg-[var(--bg-alt)] rounded-sm shadow-sm hover:shadow-2xl transition-all duration-700 animate-fade-in-up"
+              className="group relative aspect-[4/5] overflow-hidden bg-[var(--bg-alt)] rounded-2xl shadow-lg hover:shadow-[0_20px_50px_rgba(197,165,114,0.3)] transition-all duration-[800ms] animate-fade-in-up transform hover:-translate-y-2"
               style={{ animationDelay: `${index * 150}ms` }}
             >
               <Image
@@ -157,16 +159,19 @@ export default function Home() {
                 alt={c.title}
                 fill
                 sizes="(max-width:768px) 50vw, 33vw"
-                className="object-cover group-hover:scale-110 group-hover:opacity-80 transition duration-700 ease-in-out"
+                className="object-cover group-hover:scale-110 transition duration-[10000ms] ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-all duration-500" />
-              <div className="absolute bottom-0 inset-x-0 p-5 text-white flex flex-col justify-end transform transition-transform duration-500">
-                <h3 className="text-2xl lg:text-3xl font-light transform group-hover:-translate-y-2 transition-transform duration-500">{c.title}</h3>
-                <p className="text-[11px] tracking-brand uppercase text-[var(--gold)] mt-1 transform group-hover:-translate-y-2 transition-transform duration-500 delay-75">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent group-hover:from-black/95 transition-all duration-700" />
+              {/* Shimmer sweep effect */}
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-[shimmer_1.5s_ease-out]" />
+              
+              <div className="absolute bottom-0 inset-x-0 p-8 text-white flex flex-col justify-end transform transition-transform duration-700">
+                <h3 className="text-3xl lg:text-4xl font-light transform group-hover:-translate-y-3 transition-transform duration-700">{c.title}</h3>
+                <p className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] mt-2 transform group-hover:-translate-y-3 transition-transform duration-700 delay-100 opacity-90">
                   {c.tagline}
                 </p>
-                <div className="mt-4 overflow-hidden h-0 group-hover:h-10 transition-all duration-500 opacity-0 group-hover:opacity-100 flex items-center gap-2 text-[11px] tracking-brand uppercase">
-                  <span className="border-b border-[var(--gold)] pb-1">Explore Collection</span>
+                <div className="mt-5 overflow-hidden h-0 group-hover:h-12 transition-all duration-700 opacity-0 group-hover:opacity-100 flex items-center gap-3 text-[11px] tracking-brand uppercase bg-white/10 backdrop-blur-md rounded-full px-5 w-max">
+                  <span>Explore Collection</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>

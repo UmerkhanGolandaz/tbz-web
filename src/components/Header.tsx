@@ -61,8 +61,8 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-[var(--border)] shadow-sm transition-all duration-300">
-
+    <>
+      <header className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-[var(--border)] shadow-sm transition-all duration-300">
 
       {/* desktop top row */}
       <div className="hidden lg:grid grid-cols-3 items-center px-8 py-4">
@@ -151,9 +151,11 @@ export default function Header() {
         </div>
       </div>
 
+      </header>
+
       {/* mobile drawer - only items not in the bottom tab bar */}
       {open && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-black/45" onClick={() => setOpen(false)}>
+        <div className="lg:hidden fixed inset-0 z-[100] bg-black/45" onClick={() => setOpen(false)}>
           <div
             role="dialog"
             aria-modal="true"
@@ -209,7 +211,7 @@ export default function Header() {
       )}
 
       {searchOpen && <SearchModal onClose={() => setSearchOpen(false)} />}
-    </header>
+    </>
   );
 }
 

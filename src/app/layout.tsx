@@ -30,15 +30,15 @@ export const metadata: Metadata = {
   title: "TBZ · The Original | Tribhovandas Bhimji Zaveri",
   description:
     "Heritage jewellery from TBZ · The Original. Explore gold, diamond, jadau & bridal collections. Book a personal appointment.",
-  manifest: "/manifest.webmanifest",
+  manifest: "/tbz-web/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "TBZ",
   },
   icons: {
-    icon: "/icons/icon-192.svg",
-    apple: "/icons/icon-192.svg",
+    icon: "/tbz-web/icons/icon-192.svg",
+    apple: "/tbz-web/icons/icon-192.svg",
   },
 };
 
