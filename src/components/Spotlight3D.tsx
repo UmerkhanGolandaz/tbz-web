@@ -40,7 +40,7 @@ export default function Spotlight3D() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
         
         {/* Left side: Premium Typography & Content */}
-        <div className="order-2 lg:order-1 max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+        <div className="order-2 lg:order-1 max-w-xl mx-auto lg:mx-0 text-center lg:text-left relative z-20">
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="w-8 h-[1px] bg-[var(--gold)]" />
             <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] font-medium">Signature Collection</p>
