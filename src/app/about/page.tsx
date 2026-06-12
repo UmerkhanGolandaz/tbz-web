@@ -16,7 +16,7 @@ export default function About() {
     <>
       <section className="relative h-[44vh] min-h-[300px]">
         <Image
-          src="/img/1602173574767-37ac01994b2a.jpg"
+          src="/tbz-web/img/1602173574767-37ac01994b2a.jpg"
           alt="TBZ heritage"
           fill
           priority

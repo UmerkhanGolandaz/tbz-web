@@ -4,7 +4,7 @@ export default function Logo({ size = 56 }: { size?: number }) {
   const height = Math.round((size * 90) / 129);
   return (
     <img
-      src="/tbz-logo.png"
+      src="/tbz-web/tbz-logo.png"
       alt="TBZ · The Original"
       width={size}
       height={height}

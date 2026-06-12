@@ -14,7 +14,7 @@ export default function Home() {
       {/* hero (desktop only - replaced by app-style header on mobile) */}
       <section className="hidden lg:block relative h-[68vh] min-h-[460px] md:h-[72vh] md:min-h-[480px] overflow-hidden">
         <Image
-          src="/hero.jpg"
+          src="/tbz-web/hero.jpg"
           alt="TBZ bridal jewellery"
           fill
           priority
@@ -57,7 +57,7 @@ export default function Home() {
           className="relative block aspect-[16/10] overflow-hidden rounded-2xl"
         >
           <Image
-            src="/hero.jpg"
+            src="/tbz-web/hero.jpg"
             alt="TBZ bridal"
             fill
             sizes="100vw"
@@ -171,7 +171,7 @@ export default function Home() {
       <section className="hidden lg:grid max-w-7xl mx-auto px-6 lg:px-10 py-10 md:py-20 md:grid-cols-2 gap-10 items-center">
         <div className="relative aspect-[4/3]">
           <Image
-            src="/img/1633934542430-9d4a1f8c0c39.jpg"
+            src="/tbz-web/img/1633934542430-9d4a1f8c0c39.jpg"
             alt="Kalpavruksha"
             fill
             sizes="(max-width:768px) 100vw, 50vw"

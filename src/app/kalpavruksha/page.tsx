@@ -22,7 +22,7 @@ export default function Kalpavruksha() {
     <>
       <section className="relative h-[36vh] min-h-[260px]">
         <Image
-          src="/img/1633934542430-9d4a1f8c0c39.jpg"
+          src="/tbz-web/img/1633934542430-9d4a1f8c0c39.jpg"
           alt="Kalpavruksha"
           fill
           priority
