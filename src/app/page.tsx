@@ -185,28 +185,52 @@ export default function Home() {
       {/* Premium Spotlight 3D Section */}
       <Spotlight3D />
 
-      <section className="hidden lg:grid max-w-7xl mx-auto px-6 lg:px-10 py-10 md:py-20 md:grid-cols-2 gap-10 items-center animate-fade-in-up">
-        <div className="relative aspect-square md:aspect-[4/3] rounded-lg overflow-hidden shadow-sm group">
+      <section className="hidden lg:block relative py-32 md:py-48 animate-fade-in-up group mt-20 mb-10 overflow-hidden">
+        {/* Full bleed cinematic background */}
+        <div className="absolute inset-0 z-0">
           <Image
             src="/tbz-web/img/1603561591411-07134e71a2a9.jpg"
             alt="Kalpavruksha Gold Savings"
             fill
-            sizes="(max-width:768px) 100vw, 50vw"
-            className="object-cover group-hover:scale-105 transition duration-700"
+            sizes="100vw"
+            className="object-cover transform group-hover:scale-110 transition duration-[20000ms] ease-out object-center"
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
         </div>
-        <div>
-          <p className="text-[11px] tracking-brand uppercase text-[var(--gold-dark)]">
-            Gold Savings Plan
-          </p>
-          <h2 className="text-4xl md:text-5xl mt-2">Kalpavruksha</h2>
-          <p className="mt-4 text-[var(--muted)] leading-relaxed">
-            The wish-fulfilling gold tree. Pay 11 instalments, TBZ pays the 12th · then
-            choose any jewellery you love. Smart savings towards your dream piece.
-          </p>
-          <Link href="/kalpavruksha" className="btn-gold mt-7 inline-block">
-            Start a Plan
-          </Link>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="w-12 h-[1px] bg-[var(--gold)]" />
+              <p className="text-[11px] tracking-[0.4em] uppercase text-[var(--gold)] font-medium">
+                Gold Savings Plan
+              </p>
+            </div>
+            
+            <h2 className="text-5xl md:text-7xl text-white font-serif font-light mb-6 drop-shadow-lg">
+              Kalpavruksha
+            </h2>
+            
+            <p className="text-white/80 leading-relaxed mb-10 text-lg md:text-xl font-light max-w-lg">
+              The wish-fulfilling gold tree. Pay 11 instalments, TBZ pays the 12th — then
+              choose any jewellery you love. Smart savings towards your dream masterpiece.
+            </p>
+            
+            <Link 
+              href="/kalpavruksha" 
+              className="inline-flex items-center gap-4 group/link"
+            >
+              <div className="w-14 h-14 rounded-full border border-[var(--gold)] flex items-center justify-center text-[var(--gold)] group-hover/link:bg-[var(--gold)] group-hover/link:text-white transition-colors duration-500">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                   <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <span className="text-[12px] tracking-[0.2em] uppercase text-white group-hover/link:text-[var(--gold)] transition-colors duration-500">
+                Start a Plan
+              </span>
+            </Link>
+          </div>
         </div>
       </section>
 
