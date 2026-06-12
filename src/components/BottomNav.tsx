@@ -89,7 +89,8 @@ export default function BottomNav() {
             <li key={t.href} className="flex">
               <Link
                 href={href}
-                className={`flex-1 py-2 flex flex-col items-center gap-0.5 ${
+                aria-current={active ? "page" : undefined}
+                className={`flex-1 min-h-14 py-2 flex flex-col items-center justify-center gap-0.5 ${
                   active ? "text-[var(--gold-dark)]" : "text-[var(--muted)]"
                 }`}
               >

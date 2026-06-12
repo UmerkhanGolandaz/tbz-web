@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { useAuth } from "./AuthProvider";
 import NotificationBell from "./NotificationBell";
@@ -45,11 +45,26 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const { user } = useAuth();
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-[var(--border)]">
-      {/* announcement bar (desktop only — keeps mobile chrome app-like) */}
+      {/* announcement bar (desktop only - keeps mobile chrome app-like) */}
       <div className="hidden lg:block bg-[var(--bg-alt)] text-[11px] tracking-brand uppercase text-[var(--muted)] py-1.5 text-center">
-        Heritage of Indian Jewellery since 1864 · Free home preview in select cities
+        Heritage of Indian Jewellery since 1864 - Free home preview in select cities
       </div>
 
       {/* desktop top row */}
@@ -104,28 +119,44 @@ export default function Header() {
       </div>
 
       {/* mobile bar */}
-      <div className="lg:hidden flex items-center justify-between px-4 py-3">
-        <button
-          onClick={() => setSearchOpen(true)}
-          aria-label="Search"
-          className="p-1.5 -ml-1.5 text-[var(--muted)] hover:text-[var(--gold-dark)]"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M20 20l-3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </button>
+      <div className="lg:hidden grid grid-cols-[1fr_auto_1fr] items-center px-4 py-3">
+        <div className="flex items-center gap-1 justify-start">
+          <button
+            onClick={() => setOpen(true)}
+            aria-label="Open menu"
+            className="p-1.5 -ml-1.5 text-[var(--muted)] hover:text-[var(--gold-dark)]"
+          >
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
         <Link href="/" aria-label="TBZ home">
           <Logo size={52} />
         </Link>
-        <NotificationBell />
+        <div className="flex items-center gap-1 justify-end">
+          <button
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search"
+            className="p-1.5 text-[var(--muted)] hover:text-[var(--gold-dark)]"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M20 20l-3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
+          <NotificationBell />
+        </div>
       </div>
 
-      {/* mobile drawer · only items not in the bottom tab bar */}
+      {/* mobile drawer - only items not in the bottom tab bar */}
       {open && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-black/40" onClick={() => setOpen(false)}>
+        <div className="lg:hidden fixed inset-0 z-50 bg-black/45" onClick={() => setOpen(false)}>
           <div
-            className="absolute left-0 top-0 h-full w-[82%] max-w-sm bg-white overflow-y-auto"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile menu"
+            className="absolute left-0 top-0 h-full w-[84%] max-w-sm bg-white overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center px-6 pt-5 pb-3">
@@ -169,7 +200,7 @@ export default function Header() {
             />
 
             <p className="text-[10px] tracking-brand uppercase text-[var(--muted)] text-center pt-2 pb-6">
-              TBZ · The Original · Since 1864
+              TBZ - The Original - Since 1864
             </p>
           </div>
         </div>

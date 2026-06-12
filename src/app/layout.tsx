@@ -7,6 +7,7 @@ import BottomNav from "@/components/BottomNav";
 import ChatBot from "@/components/ChatBot";
 import InstallPrompt from "@/components/InstallPrompt";
 import SplashScreen from "@/components/SplashScreen";
+import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 import { AuthProvider } from "@/components/AuthProvider";
 import { AppointmentProvider } from "@/components/AppointmentProvider";
 import { NotificationProvider } from "@/components/NotificationProvider";
@@ -65,12 +66,7 @@ export default function RootLayout({
                 <BottomNav />
                 <ChatBot />
                 <InstallPrompt />
-                <script
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      "if ('serviceWorker' in navigator) { window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); }); }",
-                  }}
-                />
+                <ServiceWorkerRegister />
               </AppointmentProvider>
               </WishlistProvider>
             </DigitalGoldProvider>
