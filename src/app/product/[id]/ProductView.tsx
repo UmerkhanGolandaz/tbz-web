@@ -262,7 +262,7 @@ export default function ProductView({
             </p>
             <h2 className="text-3xl mt-2">Complete the Look</h2>
           </div>
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-10 -mx-5 px-5 lg:mx-0 lg:px-0 no-scrollbar cursor-grab active:cursor-grabbing">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-10 -mx-5 px-5 lg:mx-0 lg:px-0 no-scrollbar cursor-grab active:cursor-grabbing md:justify-center">
             {relatedProducts.map((p, index) => (
               <Link 
                 key={p.id} 
