@@ -262,12 +262,12 @@ export default function ProductView({
             </p>
             <h2 className="text-3xl mt-2">Complete the Look</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
+          <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-12">
             {relatedProducts.map((p, index) => (
               <Link 
                 key={p.id} 
                 href={`/product/${p.id}`} 
-                className="group flex flex-col h-full animate-fade-in-up"
+                className="group flex flex-col h-full animate-fade-in-up w-[calc(50%-0.5rem)] md:w-[calc(25%-1.125rem)] max-w-[280px]"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-[var(--bg-alt)] rounded-sm mb-4 shrink-0">
