@@ -66,7 +66,7 @@ export default function Header() {
 
       {/* desktop top row */}
       <div className="hidden lg:grid grid-cols-3 items-center px-8 py-4">
-        <nav className="flex gap-6 text-[11px] tracking-brand uppercase text-[var(--muted)]">
+        <nav className="flex items-center gap-6 text-[11px] tracking-brand uppercase text-[var(--muted)]">
           {navLeft.map((n) => (
             <Link key={n.href} href={n.href} className="hover:text-[var(--gold-dark)]">
               {n.label}
@@ -78,7 +78,7 @@ export default function Header() {
             <Logo size={72} />
           </Link>
         </div>
-        <nav className="flex gap-6 justify-end text-[11px] tracking-brand uppercase text-[var(--muted)]">
+        <nav className="flex items-center gap-6 justify-end text-[11px] tracking-brand uppercase text-[var(--muted)]">
           {navRight.map((n) => (
             <Link key={n.href} href={n.href} className="hover:text-[var(--gold-dark)]">
               {n.label}
