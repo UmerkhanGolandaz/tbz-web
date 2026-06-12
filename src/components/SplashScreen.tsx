@@ -56,11 +56,7 @@ export default function SplashScreen() {
           className="drop-shadow-[0_0_40px_rgba(197,165,114,0.6)] animate-fade-in-up"
           style={{ filter: "drop-shadow(0 0 40px rgba(197,165,114,0.6))" }}
         >
-          <img 
-            src="https://www.tbztheoriginal.com/images/logo.png" 
-            alt="TBZ Logo" 
-            className="h-28 md:h-36 object-contain"
-          />
+          <Logo size={240} />
         </div>
         <p className="mt-8 text-[11px] tracking-[0.6em] uppercase text-[var(--gold)] animate-fade-in-up delay-100 drop-shadow-[0_0_10px_rgba(197,165,114,0.8)]">
           Since 1864
